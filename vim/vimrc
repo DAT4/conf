@@ -1,0 +1,66 @@
+call plug#begin('~/.vim/plugged')
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'google/vim-jsonnet'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'godlygeek/tabular'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'aklt/plantuml-syntax'
+Plug 'junegunn/goyo.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'udalov/kotlin-vim'
+call plug#end()
+
+
+set rtp+=$GOROOT/misc/vim
+filetype plugin on
+filetype indent on
+syntax on
+
+let g:vim_markdown_folding_disabled = 1
+
+"map <leader>pp :w<CR>:!clear<CR>:!make %:t:r<CR> !./%:t:r<CR>
+map <leader>sh :w<CR>:!sh %<CR>
+map <leader>pl :w<CR>:!plantuml %<CR>
+map <leader>ææ :w<CR>:!clear && javac % && java %:t:r<CR>
+map <leader>pp :w<CR>:!clear && python %<CR>
+map <leader>gc :w<CR>:!gcc -o %:t:r % && ./%:t:r<CR>
+map <c :w<CR>:!c %<CR><CR>
+map <leader>aa :w<CR>:!assembler %<CR>
+map gw gUiw
+
+let g:tex_flavor='latex'
+let g:Tex_BibtexFlavor = 'biber'
+let g:Tex_DefaultTargetFormat="pdf"
+let g:Tex_MultipleCompileFormats='pdf,dvi'
+
+set shellslash
+set wildmenu
+set showmatch
+set ts=4
+set sts=4
+set sw=4
+set autoindent
+set smartindent
+set smarttab
+set expandtab
+set number
+
+source ~/.vim/config/latex.vim
+source ~/.vim/config/javabob.vim
+
+let c='a'
+   while c <= 'z'
+     exec "set <A-".c.">=\e".c
+     exec "imap \e".c." <A-".c.">"
+     let c = nr2char(1+char2nr(c))
+   endw
+
+   set timeout ttimeoutlen=50
+au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+au BufRead,BufNewFile *.g4 set filetype=antlr4
+

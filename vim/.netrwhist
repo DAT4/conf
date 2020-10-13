@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/martin/AndroidStudioProjects/App/app/src/main/java/sh/mama'
+let g:netrw_dirhist_9='/home/martin/AndroidStudioProjects/App/app/src/main/java/sh'
+let g:netrw_dirhist_8='/home/martin/AndroidStudioProjects/App/app/src/main/java'
+let g:netrw_dirhist_7='/home/martin/AndroidStudioProjects/App/app/src/main'
+let g:netrw_dirhist_6='/home/martin/AndroidStudioProjects/App/app'
+let g:netrw_dirhist_5='/home/martin/DTU3SEM/Compiler/impl/impl'
+let g:netrw_dirhist_4='/home/martin/DTU3SEM/Compiler/impl'
+let g:netrw_dirhist_3='/home/martin/.ssh'
+let g:netrw_dirhist_2='/home/martin/AndroidStudioProjects/App/app/src/main/java/sh/mama'
+let g:netrw_dirhist_1='/home/martin/AndroidStudioProjects/App/app/src/main/java/sh'

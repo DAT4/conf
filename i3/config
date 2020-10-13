@@ -1,0 +1,318 @@
+set $mod Mod4
+new_window pixel 0
+new_float normal
+hide_edge_borders none
+bindsym $mod+o exec firefox "https://www.dba.dk/til-boligen/haarde-hvidevarer/koeleskabe-og-frysere/reg-koebenhavn-og-omegn/?fra=privat&pris=(-1)"
+
+for_window [class="Firefox" instance="Browse"] floating disable
+
+#KEYBOARDLAYOUT
+#colemak/english/danish/bulgarian
+set $books Books: (1) Django, 
+mode "$books" {
+	bindsym 1 exec --no-startup-id mupdf ~/Reading/Python/django.pdf, mode"default"
+	#Exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym space mode "default"
+}
+
+bindsym $mod+Shift+b mode "$books"
+
+set $kbl Keyboard Layout: (1) Colemak, (2) English, (3) Dansk (4) български
+mode "$kbl" {
+	bindsym 1 exec --no-startup-id setxkbmap -layout us -variant colemak, mode "default"
+	bindsym 2 exec --no-startup-id setxkbmap us, mode "default"
+	bindsym 3 exec --no-startup-id setxkbmap dk, mode "default"
+	bindsym 4 exec --no-startup-id setxkbmap bg -layout latin, mode "default"
+	#Exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym space mode "default"
+}
+
+bindsym $mod+space mode "$kbl"
+
+set $screen SCREEN Layout: (1) Laptop (2) Big Screen (3) Office (4) Tall
+mode "$screen" {
+	bindsym 1 exec sh "/home/martin/.screenlayout/laptop.sh" , mode "default"
+	bindsym 2 exec sh "/home/martin/.screenlayout/tv.sh" , mode "default"
+	bindsym 3 exec sh "/home/martin/.screenlayout/normal.sh" , mode "default"
+	bindsym 4 exec sh "/home/martin/.screenlayout/tall.sh" , mode "default"
+	#Exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym space mode "default"
+}
+#DTULINKS
+set $dtu DTU: (1) Kurser (2) Overleaf (3) Studiemail (4) ThinLinc
+mode "$dtu" {
+	bindsym 1 mode "$kurser"  
+	bindsym 2 exec firefox "https://www.overleaf.com/login", mode "default"
+	bindsym 3 exec firefox "https://outlook.com/dtu.dk", mode "default"
+	bindsym 4 exec firefox "https://thinlinc.gbar.dtu.dk/main/", mode "default"
+	#Exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym space mode "default"
+}
+set $kurser Kurser: (1) Indledende programmering (2) Databaser(3) Datakommunikation (4) Algirutmer (5) Maskinnaer programmering
+mode "$kurser" {
+	bindsym 1 mode "$progr"
+	bindsym 2 mode "$datab"  
+	bindsym 3 mode "$datak" 
+	bindsym 4 mode "$algor" 
+	bindsym 5 mode "$maskin" 
+	#Exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym space mode "default"
+}
+
+set $progr Indledende Programmering: (1) inside (2) Dimplom Portal (3) Google Drive (4) Registrering (5) Deltagerliste
+mode "$progr" {
+	bindsym 1 exec firefox https://cn.inside.dtu.dk/cnnet/element/612855, mode "default"
+	bindsym 2 exec firefox https://diplomportal.herokuapp.com/, mode "default"
+    bindsym 3 exec firefox https://drive.google.com/drive/folders/0B1qlt-Xd6kaQalk4REc5Yk5ZWWM, mode "default"
+    bindsym 4 exec firefox https://script.google.com/macros/s/AKfycbwBDFeKurY7fDBQ9booRQGo_QyIHl_gEnR0UYKNCb_xGCtPftHu/exec?regCodeCell=C1&dateRange=j3:3&studentRange=d4:d&sp=https://docs.google.com/spreadsheets/d/1lr-twJ8jywhq2kdzblioPcsY4VJP0uL8GZqEXkDEuCU/edit#gid=730350562, mode "default"
+    bindsym 5 exec firefox https://docs.google.com/spreadsheets/d/1lr-twJ8jywhq2kdzblioPcsY4VJP0uL8GZqEXkDEuCU/edit#gid=730350562, mode "default"
+	#Exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym space mode "default"
+}
+
+set $datab Databaser: (1) inside
+mode "$datab" {
+	bindsym 1 exec firefox https://cn.inside.dtu.dk/cnnet/element/612959, mode "default"
+	#Exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym space mode "default"
+}
+
+set $datak Datakomunikation: (1) inside (2) Overblik
+mode "$datak" {
+	bindsym 1 exec firefox https://cn.inside.dtu.dk/cnnet/element/612617, mode "default"
+	bindsym 2 exec firefox https://docs.google.com/document/d/16DyiuB5UiHE8tf4p4buvQ909-xiKgwXWzckjXr7WcjY/edit, mode "default"
+	#Exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym space mode "default"
+}
+
+set $algor Algoritmer: (1) inside (2) Overblik (3) Gradescope (4) Codejudge
+mode "$algor" {
+	bindsym 1 exec firefox https://cn.inside.dtu.dk/cnnet/element/612923, mode "default"
+	bindsym 2 exec firefox http://www2.compute.dtu.dk/courses/02105+02326/2020/, mode "default"
+	bindsym 3 exec firefox https://www.gradescope.com/courses/76071, mode "default"
+	bindsym 4 exec firefox https://dtu.codejudge.net/algo-f20/exercises/view, mode "default"
+	#Exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym space mode "default"
+}
+
+set $maskin Maskin Programmering: (1) inside (2) Lern
+mode "$maskin" {
+	bindsym 1 exec firefox https://cn.inside.dtu.dk/cnnet/element/612991, mode "default"
+    bindsym 2 exec firefox https://learn.inside.dtu.dk/d2l/home/36238, mode "default"
+	#Exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym space mode "default"
+}
+
+bindsym $mod+p mode "$dtu"
+bindsym $mod+Shift+p mode "$screen"
+
+#SHORTCUTS
+bindsym $mod+F1				exec idea
+bindsym $mod+F2				exec firefox duckduckgo.com
+bindsym $mod+c              exec urxvt -e cmus
+bindsym $mod+Shift+Return   exec urxvt -e ranger /home/martin/DTU3SEM/
+bindsym Mod5+Return         exec urxvt -e emacs /home/martin/DTU3SEM/plan.org
+bindsym $mod+u				exec termite
+bindsym $mod+plus			exec i3lock -ui ~/.leaves.png
+
+#PASTINGS
+bindsym $mod+i				exec echo "HZMJZNZK" |xclip -selection clipboard
+bindsym $mod+Shift+u	    exec xclip -selection clipboard
+
+# System kontrol
+bindsym XF86AudioLowerVolume		exec "pactl set-sink-volume @DEFAULT_SINK@ -1000"
+bindsym	XF86AudioRaiseVolume		exec "pactl set-sink-volume @DEFAULT_SINK@ +1000"
+bindsym XF86AudioMute			exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bindsym XF86MonBrightnessUp		exec "xbacklight -inc 10" 
+bindsym XF86MonBrightnessDown		exec "xbacklight -dec 10"
+
+
+#SCRATCHPAD
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+#FONT
+font pango:Inconsolata 9
+
+#DRAGWINDOWS 
+floating_modifier $mod
+
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
+
+# PROGRAMS
+bindsym $mod+Return exec urxvt
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1, workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2, workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3, workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4, workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5, workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6, workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7, workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8, workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9, workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10, workspace $ws10
+
+bindsym $mod+Mod1+Left workspace prev
+bindsym $mod+Mod1+Right workspace next
+bindsym $mod+Mod1+h workspace prev
+bindsym $mod+Mod1+l workspace next
+
+bindsym $mod+Mod1+Shift+Left move container to workspace prev, workspace prev 
+bindsym $mod+Mod1+Shift+Right move container to workspace next, workspace next
+bindsym $mod+Mod1+Shift+h move container to workspace prev, workspace prev 
+bindsym $mod+Mod1+Shift+l move container to workspace next, workspace next
+
+# back and forth switch and move
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+Tab move container to workspace back_and_forth, workspace back_and_forth
+
+# reload restart exit i3
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Luk for X session.' -B 'Ja tak' 'i3-msg exit'"
+
+# resize 
+mode "resize" {
+        bindsym h resize shrink width 1 px or 1 ppt
+        bindsym j resize grow height 1 px or 1 ppt
+        bindsym l resize grow width 1 px or 1 ppt
+        bindsym k resize shrink height 1 px or 1 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#I3-BAR
+bar {
+	status_command ~/.tools/i3script.py
+	i3bar_command i3bar
+	status_command i3status
+    	font pango:Inconsolata 9
+  colors {
+    background #282A36
+    statusline #ff79c6
+    separator  #ffb86c
+
+    focused_workspace  #44475A #44475A #F8F8F2
+    active_workspace   #282A36 #44475A #F8F8F2
+    inactive_workspace #282A36 #282A36 #BFBFBF
+    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    binding_mode       #44475A #44475A #F8F8F2
+  }
+}
+
+# hide/unhide i3status bar
+bindsym $mod+m bar mode toggle
+
+
+# class                   border  backgr. text    indic.   child_border
+  client.focused          #556064 #97b545 #80FFF9 #FDF6E3 #4169E1
+  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948 #454948
+  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948 #454948
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2 #454948
+  client.placeholder      #000000 #0c0c0c #FDF6E3 #000000 #454948
+  client.background       #2B2C2B
+
+gaps inner 10
+gaps outer 0
+
+#STARTUP
+#exec --no-startup-id picom --config=~/.config/picom/picom.conf
+#exec --no-startup-id /home/martin/Andet/dbascraper/main.py
+#exec --no-startup-id feh --bg-fill /home/martin/Billeder/System/paint.jpg
+#exec --no-startup-id feh --bg-fill /home/martin/Billeder/System/retro.jpg
+
+exec --no-startup-id setxkbmap dk
+
+#Update OS-plan
+exec --no-startup-id python /home/martin/DTU3SEM/OperativSystemer/get_plan.py

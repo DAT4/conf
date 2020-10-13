@@ -1,0 +1,46 @@
+#ANTLR STUFF
+export CLASSPATH=".:/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH"
+alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
+
+# Path to your oh-my-zsh installation.
+export ZSH="/home/martin/.oh-my-zsh"
+
+ZSH_THEME="terminalparty"
+
+plugins=(
+	git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+    extract
+)
+
+source $ZSH/oh-my-zsh.sh
+
+alias egg='python /usr/local/bin/egg.py 00:07:30'                       # Egg timer script
+alias W='curl wttr.in'                                                  # Weather
+alias play='youtube-viewer -p --player=mpv'                             # Youtube
+
+alias g='gpg -e -r mail@mama.sh $1'                                     # Encrypt file
+alias d='shred -uvz -n 40 $1'                                           # Permanent delete
+
+alias maven='mvn exec:java -Dexec.mainClass="Main"'                     # Execute maven project 
+alias m='mvn clean && mvn package'                                      # Package maven project
+alias antrm='rm *.tok* & rm $1*.java & rm $1*.class & rm *.interpreter' # ANTLR Clean
+
+alias s='startx'                                                        # Start X
+alias pow='poweroff'                                                    # Power off
+alias c='xclip -selection clipboard'                                    # Copy
+alias r='ranger'                                                        # File Manager
+
+alias la='ls -al'                                                       # List dir + hidden
+
+alias high='pactl set-sink-volume @DEFAULT_SINK@ +10000'                # Lower volume
+alias low='pactl set-sink-volume @DEFAULT_SINK@ -10000'                 # Raise volume
+
+# ANTLR RUN
+function graf() {
+    antlr -visitor "$1.g4"
+    javac "$1*.java"
+    grun "$1 $2 -gui $3"
+}
